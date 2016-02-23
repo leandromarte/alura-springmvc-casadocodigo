@@ -1,9 +1,11 @@
 package br.com.casadocodigo.loja.conf;
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import javax.servlet.ServletRegistration.Dynamic;
 
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -29,4 +31,12 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 		return new Filter[] {filter};
 	}
 
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setMultipartConfig(new MultipartConfigElement(""));
+	}
+//    protected void customizeRegistration(Dynamic registration) {
+//        
+//    }	
+	
 }
