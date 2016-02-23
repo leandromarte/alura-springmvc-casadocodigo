@@ -14,22 +14,27 @@
 <body>
 	<form:form action="${s:mvcUrl('PC#gravar').build()}" method="POST" commandName="produto">
 		<label>T&iacute;tulo</label>
-		<input type="text" name="titulo">
+		<form:input path="titulo" />
 		<form:errors path="titulo" />
 		<br/>
-		<label>Descri&ccedil;&atilde;o</label><textarea name="descricao">
-		</textarea>
+		<label>Descri&ccedil;&atilde;o</label>
+		<form:textarea path="descricao" />
 		<form:errors path="descricao" />
 		<br/>
-		<label>P&aacute;ginas</label><input type="text" name="paginas">
+		<label>P&aacute;ginas</label>
+		<form:input path="paginas" />
 		<form:errors path="paginas" />
+		<br/>
+		<label>Data de lan&ccedil;amento</label>
+		<form:input path="dataLancamento" />
+		<form:errors path="dataLancamento" />
 		<br/>
 				
 		<c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
 	        <div>
 	            <label>${tipoPreco}</label>
-	            <input type="text" name="precos[${status.index}].valor">
-	            <input type="hidden" name="precos[${status.index}].tipoPreco" value="${tipoPreco}">
+	            <form:input path="precos[${status.index}].valor" />
+	            <form:input type="hidden" path="precos[${status.index}].tipoPreco" value="${tipoPreco}" />
 	        </div>
 		</c:forEach>		
 		
